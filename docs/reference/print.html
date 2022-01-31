@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Full Information Maximum Likelihood Linear Regression — fimlreg • ILSE</title>
+<title>Print the Information of FIML or ILSE methods — print • ILSE</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Full Information Maximum Likelihood Linear Regression — fimlreg" />
-<meta property="og:description" content="Estimate regression coefficients based on Full Information Maximum Likelihood Estimation, which can couple missing data, including response missing or covariates missing." />
+<meta property="og:title" content="Print the Information of FIML or ILSE methods — print" />
+<meta property="og:description" content="print method for class &quot;ilse&quot; or class &quot;fiml&quot;." />
 
 
 
@@ -126,90 +126,100 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Full Information Maximum Likelihood Linear Regression</h1>
+    <h1>Print the Information of FIML or ILSE methods</h1>
     
-    <div class="hidden name"><code>fimlreg.Rd</code></div>
+    <div class="hidden name"><code>print.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate regression coefficients based on Full Information Maximum Likelihood Estimation, which can couple missing data, including response missing or covariates missing.</p>
+    <p>print method for class "ilse" or class "fiml".</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fimlreg</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>print</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+  <span class='co'># S3 method for ilse</span>
+<span class='fu'>print</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 
-  <span class='co'># S3 method for formula</span>
-<span class='fu'>fimlreg</span><span class='op'>(</span><span class='va'>formula</span>, data<span class='op'>=</span><span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-  <span class='co'># S3 method for numeric</span>
-<span class='fu'>fimlreg</span><span class='op'>(</span><span class='va'>Y</span>, <span class='va'>X</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+  <span class='co'># S3 method for fiml</span>
+<span class='fu'>print</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>formula</th>
-      <td><p>an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p></td>
-    </tr>
-    <tr>
-      <th>Y</th>
-      <td><p>a numeric vector, the reponse variable.</p></td>
-    </tr>
-    <tr>
-      <th>X</th>
-      <td><p>a numeric matrix that may include NAs, the covariate matrix.</p></td>
-    </tr>
-    <tr>
-      <th>data</th>
-      <td><p>an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula), typically the environment from which clse is called.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Optional arguments.</p></td>
+      <th>object</th>
+      <td><p>an object of class "ilse" or "fiml".</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Note that arguments ... of stats::nlm are the parameters of algorithm, see the details in help file of "nlm". "fimlreg" can cople with any type of missing data.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Return a list including following components:</p>
-<dt>beta</dt><dd><p>A named vector of coefficients</p></dd>
-  <dt>formula</dt><dd><p>The formula used</p></dd>
-  <dt>data</dt><dd><p>The raw data</p></dd>
+    <p>For "ilse", print the basic information of ilse estimation and algorithm and return a list including</p>
+<dt>beta</dt><dd><p>a named vector of coefficients</p></dd>
+<dt>Bmat</dt><dd><p>a named matrix that summary the estimated beta in every iteration.</p></dd>
+<dt>residuals</dt><dd><p>the residuals, that is response minus fitted values.</p></dd>
+<dt>fitted.values</dt><dd><p>the fitted mean values.</p></dd>
+<dt>d.fn</dt><dd><p>a nonnegative value, vlaue of relative variation rate of objective function value</p></dd>
+<dt>d.par</dt><dd><p>a nonnegative value, relative variation rate of estimated parametric vector when algorithm stopped.</p></dd>
+<dt>K</dt><dd><p>a positive integer, iterative times in total.</p></dd>
 
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+For "fiml", print the basic information of fiml estimation and return a list including
 
-    <p>Liu Wei</p>
+  <dt>beta</dt><dd><p>A named vector of coefficients</p></dd>
+  <dt>iterations</dt><dd><p>A positive integer, iterative times in total.</p></dd>
+  <dt>stop.code</dt><dd><p>The stop code returned by nlm.</p></dd>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='ilse.html'>ilse</a></p></div>
+    <div class='dont-index'><p>print.lm</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>nhanes</span><span class='op'>)</span>
-<span class='co'>## example one: include missing value</span>
-<span class='va'>fiml1</span> <span class='op'>&lt;-</span> <span class='fu'>fimlreg</span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span><span class='op'>)</span>
-<span class='fu'><a href='print.html'>print</a></span><span class='op'>(</span><span class='va'>fiml1</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>nhanes</span><span class='op'>)</span>
+<span class='va'>NAlm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ilse.html'>ilse</a></span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span><span class='op'>)</span>
+<span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'>print</span><span class='op'>(</span><span class='va'>NAlm1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $beta
+#&gt; (Intercept)         bmi         hyp         chl 
+#&gt;  2.06942664 -0.11656313  0.62109971  0.01056364 
+#&gt; 
+#&gt; $d.fn
+#&gt; [1] 6.654795e-08
+#&gt; 
+#&gt; $d.par
+#&gt; [1] 1.096466e-07
+#&gt; 
+#&gt; $iterations
+#&gt; [1] 5
+#&gt; </div><div class='input'><span class='va'>a</span>
+</div><div class='output co'>#&gt; $beta
+#&gt; (Intercept)         bmi         hyp         chl 
+#&gt;  2.06942664 -0.11656313  0.62109971  0.01056364 
+#&gt; 
+#&gt; $d.fn
+#&gt; [1] 6.654795e-08
+#&gt; 
+#&gt; $d.par
+#&gt; [1] 1.096466e-07
+#&gt; 
+#&gt; $iterations
+#&gt; [1] 5
+#&gt; </div><div class='input'>
+<span class='va'>fimllm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fimlreg.html'>fimlreg</a></span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span>, iterlim<span class='op'>=</span> <span class='fl'>40</span><span class='op'>)</span>
+<span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'>print</span><span class='op'>(</span><span class='va'>fimllm</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $beta
 #&gt;   intercept         bmi         hyp         chl 
 #&gt;  2.37216291 -0.13518966  0.46886921  0.01253721 
 #&gt; 
 #&gt; $formula
 #&gt; age ~ .
-#&gt; &lt;environment: 0x00000000168f1200&gt;
-#&gt; </div><div class='input'><span class='co'># example two: No missing vlaue</span>
-<span class='co'>## example two: No missing value</span>
-<span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
-<span class='va'>group</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span>, sd<span class='op'>=</span><span class='fl'>4</span><span class='op'>)</span>
-<span class='va'>weight</span> <span class='op'>&lt;-</span> <span class='fl'>3.2</span><span class='op'>*</span><span class='va'>group</span> <span class='op'>+</span> <span class='fl'>1.5</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span>, sd<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span>
-<span class='va'>fimllm</span> <span class='op'>&lt;-</span> <span class='fu'>fimlreg</span><span class='op'>(</span><span class='va'>weight</span><span class='op'>~</span><span class='va'>group</span>, data<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>weight<span class='op'>=</span><span class='va'>weight</span>, group<span class='op'>=</span><span class='va'>group</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='print.html'>print</a></span><span class='op'>(</span><span class='va'>fimllm</span><span class='op'>)</span>
+#&gt; &lt;environment: 0x00000000136f73b0&gt;
+#&gt; </div><div class='input'><span class='va'>b</span>
 </div><div class='output co'>#&gt; $beta
-#&gt; intercept     group 
-#&gt;  1.511669  3.199354 
+#&gt;   intercept         bmi         hyp         chl 
+#&gt;  2.37216291 -0.13518966  0.46886921  0.01253721 
 #&gt; 
 #&gt; $formula
-#&gt; weight ~ group
-#&gt; &lt;environment: 0x00000000168f1200&gt;
+#&gt; age ~ .
+#&gt; &lt;environment: 0x00000000136f73b0&gt;
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
