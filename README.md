@@ -1,4 +1,14 @@
 # ILSE
+
+=========================================================================
+
+<!-- badges: start -->
+
+[![](https://www.r-pkg.org/badges/version-ago/ILSE)](https://cran.r-project.org/package=ILSE)
+[![](https://cranlogs.r-pkg.org/badges/ILSE?color=orange)](https://cran.r-project.org/package=ILSE)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/ILSE?color=orange)](https://cran.r-project.org/package=ILSE)
+<!-- badges: end -->
+
 Linear Regression by Iterative Least Square Estimation When Covariates Include Missing Values. In *ILSE* package, we also provide Full Information Maximum Likelihood for Linear Regression *fimlreg* that can handle missing Covariates or missing Response variables. 
 
 Please see our new paper for model details:
@@ -16,6 +26,13 @@ Or install the the packages "ILSE" from 'CRAN'
 ```{Rmd}
 install.packages("ILSE")
 ```
+
+## Usage
+For usage examples and guided walkthroughs, check the `vignettes` directory of the repo. 
+
+* [ILSE for simulated data](https://feiyoung.github.io/ILSE/articles/ILSE.Simu.html)
+* [ILSE for a toy real data](https://feiyoung.github.io/ILSE/articles/ILSE.Realdata.html)
+
 
 # Website of ILSE package
 
